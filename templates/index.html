@@ -34,8 +34,8 @@
 </head>
 <body>
     <h1>Avaltar Entry Task</h1>
-    <div class="video-container">
-        <video id="video" src="{{ url_for('video_feed') }}" autoplay="autoplay" />
-    </div>
+    <video controls="controls">
+        <source src="{{ url_for('video_feed') }}" type="video/mp4"></source>
+    </video>
 </body>
 </html>
