@@ -1,13 +1,11 @@
-from processing.frame_transformation_interface import FrameTransformation
 import cv2
 from ultralytics import YOLO
-import random
-from flask import current_app
 
-class PeopleDetection(FrameTransformation):
+class PeopleDetection():
+    _debug = False
+    
     def __init__(self):
-        super().__init__()
-        self.model = current_app.config['YOLOV8']
+        self.model = YOLO('yolov8n.pt')
         
     def apply(self, frame):
         predicted_bbs = self._get_bb_prediction(frame)
@@ -17,7 +15,7 @@ class PeopleDetection(FrameTransformation):
         PERSON_CLASS_KEY = 0
         detection_class_list = [PERSON_CLASS_KEY]
         
-        result = self.model(frame)
+        result = self.model(frame,verbose=self._debug)
         
         bb_list = []    
         for r in result:

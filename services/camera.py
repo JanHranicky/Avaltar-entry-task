@@ -1,7 +1,6 @@
 import cv2
 from processing.frame_transformer import FrameTransformer
 from processing.people_detection import PeopleDetection
-import time
 
 class Camera(object):
     test_video_path = './static/test2.mp4'
@@ -12,7 +11,10 @@ class Camera(object):
         self.transformer = FrameTransformer()
         self.transformer.add_transformation(PeopleDetection())
 
-    def get_frame(self):
+    def get_resolution(self):
+        return (int(self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT)), int(self.cap.get(cv2.CAP_PROP_FRAME_WIDTH)))
+
+    def get_frame(self, encode_jpg=False):
         ret, frame = self.cap.read()
         
         # If the video ends, restart it
@@ -22,8 +24,9 @@ class Camera(object):
 
         frame = self.transformer.transform(frame) #apply all transformations for the frame
         
-        fourcc = cv2.VideoWriter_fourcc(*'theo')
-        _, img_encoded = cv2.imencode('.jpg', frame)
-        
-        return img_encoded.tobytes()
+        if encode_jpg:
+            _, img_encoded = cv2.imencode('.jpg', frame)
+            frame = img_encoded.tobytes()
+            
+        return frame
     
