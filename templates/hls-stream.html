@@ -57,6 +57,19 @@
         .back-button:hover {
             background-color: #0056b3;
         }
+        .footer {
+            margin-top: 20px;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -73,10 +86,12 @@
             <source src="{{url_for('hls_stream_feed', filename='out.m3u8')}}" type="application/x-mpegURL">
         </video>
     </div>
+    <div class="footer">
+        <p>Created by <strong>Jan Hranický</strong> | <a href="https://github.com/JanHranicky/Avaltar-entry-task" target="_blank">GitHub Repository</a></p>
+    </div>
 </body>
 <script>
     video = videojs('my-video');
     video.play();
 </script>
-
 </html>
