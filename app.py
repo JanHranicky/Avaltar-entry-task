@@ -15,7 +15,6 @@ def hls_stream():
 
 @app.route('/hls_stream_feed/<filename>')
 def hls_stream_feed(filename):
-    print("here")
     response = make_response(send_file(
         './video/'+filename,
     ))
