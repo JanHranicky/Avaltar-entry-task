@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>HLS Streaming Demo</title>
+    <link href="https://vjs.zencdn.net/7.18.1/video-js.css" rel="stylesheet">
+    <script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #my-video {
+            margin-top: 20px;
+            width: 100%;
+            max-height: 400px;
+        }
+        .text-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+            overflow-x: auto;
+        }
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/" class="back-button">Back to Home</a>
+    <div class="text-section">
+        <h3>HLS Video Stream</h3>
+        <p>This site contains an HLS video stream. To generate the video stream displayed on this site, run the following command from the root directory:</p>
+        <pre>python -m services.stream</pre>
+        <p>The script will produce video files for the stream</p>
+    </div>
+    <div class="container">
+        <video id="my-video" class="video-js vjs-fluid" controls autoplay muted preload="auto">
+            <source src="{{url_for('hls_stream_feed', filename='out.m3u8')}}" type="application/x-mpegURL">
+        </video>
+    </div>
+</body>
+<script>
+    video = videojs('my-video');
+    video.play();
+</script>
+
+</html>
