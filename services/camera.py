@@ -3,7 +3,7 @@ from processing.frame_transformer import FrameTransformer
 from processing.people_detection import PeopleDetection
 
 class Camera(object):
-    test_video_path = './static/test2.mp4'
+    test_video_path = './static/video1.mp4'
     
     def __init__(self):
         self.cap = cv2.VideoCapture(self.test_video_path)

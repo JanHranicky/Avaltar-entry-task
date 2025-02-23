@@ -38,5 +38,9 @@ To produce the HLS stream, run the following command in a separate terminal:
 python -m services.stream
 ```
 
+The stream is created by looping a contant video `test_video_path` defined in `./services/camera.py`, change it to stream a different video. This repo is only tested on streaming `.mp4` format videos and may not handle any other format
+
+Created stream is stored in the `video/` folder and has a constant name of `out`
+
 ### Running the web app
 By default, the app runs on port 5000. Open a web browser and visit http://127.0.0.1:5000
