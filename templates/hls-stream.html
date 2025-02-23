@@ -79,7 +79,7 @@
         <h3>HLS Video Stream</h3>
         <p>This site contains an HLS video stream. To generate the video stream displayed on this site, run the following command from the root directory:</p>
         <pre>python -m services.stream</pre>
-        <p>The script will produce video files for the stream</p>
+        <p>The script will produce video files for the stream. FFMPEG Encoder, used to create HLS stream, for this project was heavily inspired by <a href="https://github.com/cheind/python-hls-stream" target="_blank">GitHub Repository</a>, written by Christoph Heindl.</p>
     </div>
     <div class="container">
         <video id="my-video" class="video-js vjs-fluid" controls autoplay muted preload="auto">
